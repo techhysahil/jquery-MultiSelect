@@ -9,6 +9,8 @@
             placeholder : "Select option",
             className : null,
             disable : false,
+
+            onOptionSelect : function(){},
         }, options );
 
         var MultiSelectData = JSON.parse(JSON.stringify(settings.data));
@@ -51,8 +53,10 @@
                         "data-id": index,
                         text: obj.name,
                         click: function(e){
-                            console.log("click item:"+obj.name);
                             closeDropdown(e);
+                            if(settings.onOptionSelect && typeof settings.onOptionSelect === "function"){
+                                settings.onOptionSelect(obj.name);
+                            }
                         }
                     }).appendTo(dropdownList);    
                 });    
@@ -130,6 +134,9 @@
                     text: obj.name,
                     click: function(e){
                         closeDropdown(e);
+                        if(settings.onOptionSelect && typeof settings.onOptionSelect === "function"){
+                            settings.onOptionSelect(obj.name);
+                        }
                     }
                 }).appendTo(itemsContainer);    
             });

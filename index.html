@@ -52,7 +52,10 @@
 			searchPlaceholder : "Search list items...",
 			placeholder : "Select option",
 			className : "state-dropdown",
-			disable : false
+			disable : false,
+            onOptionSelect : function(item){
+                console.log(item);
+            }
 		});
 	</script>
 </body>
